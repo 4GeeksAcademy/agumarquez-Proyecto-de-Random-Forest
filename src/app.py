@@ -5,7 +5,7 @@ from pickle import load
 from sklearn.preprocessing import StandardScaler
 
 # Cargar modelo
-model = load(open("src/decision_tree_classifier_default_42.sav", "rb"))
+model = load(open("decision_tree_classifier_default_42.sav", "rb"))
 
 # Diccionario de clases
 class_dict = {

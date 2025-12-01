@@ -7,10 +7,15 @@ import os, pickle
 
 # Cargar modelo
 
-model_path = os.path.join(os.path.dirname(__file__), "..", "models", "decision_tree_classifier_default_42.sav")
-with open(model_path, "rb") as f:
-    model = pickle.load(f)
+BASE_DIR = os.path.dirname(__file__)           
+MODEL_FILENAME = "random_forest_classifier_default_42.sav"  # o el que corresponda
+MODEL_PATH = os.path.join(BASE_DIR, "..", "models", MODEL_FILENAME)
 
+if not os.path.isfile(MODEL_PATH):
+    raise FileNotFoundError(f"Modelo no encontrado en: {MODEL_PATH}")
+
+with open(MODEL_PATH, "rb") as f:
+    model = pickle.load(f)
 
 # Diccionario de clases
 class_dict = {
@@ -37,7 +42,7 @@ scaler.fit(df[num_variables])
 
 # -------------------------------
 # Interfaz Streamlit
-# -------------------------------
+
 st.title("Predicción de Diabetes con Árbol de Decisión")
 
 # Inputs del usuario

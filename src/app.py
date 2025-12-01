@@ -31,7 +31,6 @@ class_dict = {
 }
 
 # Dataset para ajustar el scaler
-df = pd.read_csv("data/dataset.pkl")
 
 num_variables = [
     'Pregnancies',

@@ -16,6 +16,13 @@ if not os.path.isfile(MODEL_PATH):
 
 with open(MODEL_PATH, "rb") as f:
     model = pickle.load(f)
+DSBASE_DIR = os.path.dirname(__file__)   # .../src
+DSDATA_PATH = os.path.join(BASE_DIR, "..", "data", "dataset.pkl")
+
+if not os.path.isfile(DSDATA_PATH):
+    raise FileNotFoundError(f"Dataset no encontrado en: {DSDATA_PATH}")
+
+df = pd.read_pickle(DSDATA_PATH)
 
 # Diccionario de clases
 class_dict = {

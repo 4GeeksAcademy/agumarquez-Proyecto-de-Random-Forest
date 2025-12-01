@@ -3,9 +3,14 @@ import pandas as pd
 import numpy as np
 from pickle import load
 from sklearn.preprocessing import StandardScaler
+import os, pickle
 
 # Cargar modelo
-model = load(open("models/decision_tree_classifier_default_42.sav", "rb"))
+
+model_path = os.path.join(os.path.dirname(__file__), "..", "models", "decision_tree_classifier_default_42.sav")
+with open(model_path, "rb") as f:
+    model = pickle.load(f)
+
 
 # Diccionario de clases
 class_dict = {
